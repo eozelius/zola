@@ -6,12 +6,14 @@ class People extends Component {
   constructor(){
     super()
     this.state = {
-      people: []
+      renderedPeople: [],
+      defaultPeople: [],
+
     }
   }
 
   componentDidMount() {
-    const data = [
+    const people = [
       {
         "name": "Joe",
         "age": 24,
@@ -56,7 +58,8 @@ class People extends Component {
     ]
 
     this.setState({
-      people: data 
+      renderedPeople: people,
+      defaultPeople: people 
     })
   }
 
@@ -81,8 +84,56 @@ class People extends Component {
     return bg
   }
 
+  sort = (e) => {
+    const sortBy = e.target.value
+
+    switch(sortBy) {
+      case 'name':
+        this.sortName()
+        break
+      case 'priority':
+        this.sortPriority()
+        break
+      default:
+        this.sortDefault()
+    }    
+  }
+
+  sortName = () => {
+    let namePeople = this.state.defaultPeople.slice(0)
+    namePeople.sort((a,b) => {
+      if(a.name < b.name){ return -1 }
+      if(a.name > b.name){ return 1 }
+      return 0;
+    })
+
+    this.setState({
+      renderedPeople: namePeople
+    })
+  }
+
+  sortPriority = () => {
+    let priorityPeople = this.state.defaultPeople.slice(0)
+
+    priorityPeople.sort((a,b) => {
+      return a.priority - b.priority
+    })
+
+    this.setState({
+      renderedPeople: priorityPeople
+    })
+  }
+
+  sortDefault = () => {
+    const defaultPeople = this.state.defaultPeople.slice(0)
+
+    this.setState({
+      renderedPeople: defaultPeople
+    })
+  }
+
   render() {
-    const renderedPeople = this.state.people.map((person, index) => {
+    const renderedPeople = this.state.renderedPeople.map((person, index) => {
       const bgColor = this.bgColor(person.category)
       const personStyle = { backgroundColor: bgColor }
 
@@ -95,7 +146,26 @@ class People extends Component {
       )
     })
 
-    return <div id='people-container'>{renderedPeople}</div>
+    return (
+      <div id='people-container'>
+        <div className='sort-container'>
+          <p>Sort By</p>
+          <select className='sort-people' onChange={this.sort} >
+            <option value='featured'>Featured</option>
+            <option value='name'>Name A-Z</option>
+            <option value='priority'>Priority</option>
+          </select>
+        </div>
+
+        <div className='filer-container'>
+
+        </div>
+
+        <div className='renderedPeople-container'>
+          {renderedPeople}
+        </div>
+      </div>
+    )
   }
 }
 

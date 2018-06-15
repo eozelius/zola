@@ -2,7 +2,45 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-class People extends Component {
+class Person extends Component {
+  
+
+  bgColor(priority) {
+    let bg = ''
+    switch(priority) {
+      case 1:
+        bg = 'orange'
+        break
+      case 2:
+        bg = 'green'
+        break
+      case 3:
+        bg = 'blue'
+        break
+      case 4:
+        bg = 'purple'
+        break
+      default:
+        bg = 'transparent'
+    }
+    return bg
+  }
+
+  render() {
+    const bgColor = this.bgColor(this.props.person.priority)
+    const personStyle = { backgroundColor: bgColor }
+
+    return (
+      <div className='person' style={personStyle} >
+        <h2 className='name'>{this.props.person.name}</h2>
+        <p className='age'>{this.props.person.age}</p>
+        <p className='category'>{this.props.person.category}</p>
+      </div>
+    )
+  }
+}
+
+class PeopleList extends Component {
   constructor(){
     super()
     this.state = {
@@ -63,27 +101,6 @@ class People extends Component {
     })
   }
 
-  bgColor(priority) {
-    let bg = ''
-    switch(priority) {
-      case 1:
-        bg = 'orange'
-        break
-      case 2:
-        bg = 'green'
-        break
-      case 3:
-        bg = 'blue'
-        break
-      case 4:
-        bg = 'purple'
-        break
-      default:
-        bg = 'transparent'
-    }
-    return bg
-  }
-
   sort = (e) => {
     const sortBy = e.target.value
 
@@ -133,18 +150,7 @@ class People extends Component {
   }
 
   render() {
-    const renderedPeople = this.state.renderedPeople.map((person, index) => {
-      const bgColor = this.bgColor(person.priority)
-      const personStyle = { backgroundColor: bgColor }
-
-      return (
-        <div className='person' style={personStyle} key={index} >
-          <h2 className='name'>{person.name}</h2>
-          <p className='age'>{person.age}</p>
-          <p className='category'>{person.category}</p>
-        </div>
-      )
-    })
+    const renderedPeople = this.state.renderedPeople.map((person, index) => <Person person={person} key={index} />)
 
     return (
       <div id='people-container'>        
@@ -184,7 +190,7 @@ class People extends Component {
 
         <div className='clear-fix'></div>
 
-        <div className='renderedPeople-container'>
+        <div className='people-list-container'>
           {renderedPeople}
         </div>
       </div>
@@ -200,7 +206,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <People />
+        <PeopleList />
       </div>
     );
   }

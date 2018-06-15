@@ -63,19 +63,19 @@ class People extends Component {
     })
   }
 
-  bgColor(category) {
+  bgColor(priority) {
     let bg = ''
-    switch(category) {
-      case 'cat1':
+    switch(priority) {
+      case 1:
         bg = 'orange'
         break
-      case 'cat2':
+      case 2:
         bg = 'green'
         break
-      case 'cat3':
+      case 3:
         bg = 'blue'
         break
-      case 'cat4':
+      case 4:
         bg = 'purple'
         break
       default:
@@ -134,7 +134,7 @@ class People extends Component {
 
   render() {
     const renderedPeople = this.state.renderedPeople.map((person, index) => {
-      const bgColor = this.bgColor(person.category)
+      const bgColor = this.bgColor(person.priority)
       const personStyle = { backgroundColor: bgColor }
 
       return (
@@ -147,19 +147,42 @@ class People extends Component {
     })
 
     return (
-      <div id='people-container'>
+      <div id='people-container'>        
         <div className='sort-container'>
           <p>Sort By</p>
-          <select className='sort-people' onChange={this.sort} >
+          <select className='sort-people' onChange={this.sort} name='sort-by' >
             <option value='featured'>Featured</option>
             <option value='name'>Name A-Z</option>
             <option value='priority'>Priority</option>
           </select>
         </div>
 
-        <div className='filer-container'>
+        <div className='filter-container'>
+          <p>Filter By Category</p>
+
+          <div className='input-control'>
+            <input type='radio' value='default' name='category' />
+            <label>All Categories</label>
+          </div>
+
+          <div className='input-control'>
+            <input type='radio' value='cat1' name='category' />
+            <label>Category 1</label>
+          </div>
+
+          <div className='input-control'>
+            <input type='radio' value='cat2' name='category'/>
+            <label>Category 2</label>
+          </div>
+
+          <div className='input-control'>
+            <input type='radio' value='cat3' name='category'/>
+            <label>Category 3</label>
+          </div>
 
         </div>
+
+        <div className='clear-fix'></div>
 
         <div className='renderedPeople-container'>
           {renderedPeople}

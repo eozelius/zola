@@ -19,6 +19,7 @@ class SortPeople extends Component {
 
 class FilterCategory extends Component {
   render(){
+    const defaultChecked = this.props.selectedCategory === 'default' ? true : false
     const renderedCategories = this.props.categories.map((cat, index) => {
       return (
         <div className='input-control' key={index}>
@@ -33,7 +34,7 @@ class FilterCategory extends Component {
         <p>Filter By Category</p>
 
         <div className='input-control'>
-          <input type='radio' value='default' onChange={this.props.handleFilter} name='category' id='defaultFilter' />
+          <input type='radio' value='default' onChange={this.props.handleFilter} name='category' id='defaultFilter' checked={defaultChecked} />
           <label>All Categories</label>
         </div>
 
@@ -189,7 +190,7 @@ class PeopleList extends Component {
     return (
       <div id='people-container'>
         <SortPeople handleSort={this.updateSort} />
-        <FilterCategory categories={this.categories} handleFilter={this.updateCategory} />
+        <FilterCategory categories={this.categories} handleFilter={this.updateCategory} selectedCategory={this.state.selectedCategory} />
 
         <div className='people-list-container'>
           {renderedPeople}

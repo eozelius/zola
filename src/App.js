@@ -7,8 +7,8 @@ class SortPeople extends Component {
     return (
       <div className='sort-people-container'>
         <p>Sort By</p>
-        <select className='sort-people' onChange={this.props.handleSort()} name='sort-by' >
-          <option value='featured'>Featured</option>
+        <select className='sort-people' onChange={this.props.handleSort} name='sort-by' >
+          <option value='default'>Featured</option>
           <option value='name'>Name A-Z</option>
           <option value='priority'>Priority</option>
         </select>
@@ -17,31 +17,27 @@ class SortPeople extends Component {
   }
 }
 
-class FilterPeople extends Component {
+class FilterCategory extends Component {
   render(){
+    const renderedCategories = this.props.categories.map((cat, index) => {
+      return (
+        <div className='input-control' key={index}>
+          <input type='radio' value={cat} onChange={this.props.handleFilter} name='category' />
+          <label>{cat}</label>
+        </div>
+      )
+    })
+
     return (
       <div className='filter-people-container'>
         <p>Filter By Category</p>
 
         <div className='input-control'>
-          <input type='radio' value='default' name='category' />
+          <input type='radio' value='default' onChange={this.props.handleFilter} name='category' id='defaultFilter' />
           <label>All Categories</label>
         </div>
 
-        <div className='input-control'>
-          <input type='radio' value='cat1' name='category' />
-          <label>Category 1</label>
-        </div>
-
-        <div className='input-control'>
-          <input type='radio' value='cat2' name='category'/>
-          <label>Category 2</label>
-        </div>
-
-        <div className='input-control'>
-          <input type='radio' value='cat3' name='category'/>
-          <label>Category 3</label>
-        </div>
+        {renderedCategories}
       </div>
     )
   }
@@ -86,13 +82,8 @@ class Person extends Component {
 class PeopleList extends Component {
   constructor(){
     super()
-    this.state = {
-      renderedPeople: [],
-      defaultPeople: [],
-    }
-  }
-
-  componentDidMount() {
+    
+    let categories = new Set()
     const people = [
       {
         "name": "Joe",
@@ -137,63 +128,68 @@ class PeopleList extends Component {
       }
     ]
 
-    this.setState({
-      renderedPeople: people,
-      defaultPeople: people 
-    })
+    this.people = people
+    people.forEach((person) => categories.add(person.category))
+    this.categories = Array.from(categories).sort()
+
+    this.state = {
+      selectedCategory: 'default',
+      sortBy: 'default',
+    }
   }
 
-  sort = (e) => {
-    const sortBy = e.target.value
+  updateCategory = (e) => {
+    this.setState({selectedCategory: e.target.value})
+  }
 
-    switch(sortBy) {
+  updateSort = (e) => {
+    this.setState({sortBy: e.target.value})
+  }
+
+  sortPeople = (people) => {
+    switch(this.state.sortBy) {
       case 'name':
-        this.sortName()
+        return this.sortName(people)
         break
       case 'priority':
-        this.sortPriority()
+        return this.sortPriority(people)
         break
       default:
-        this.sortDefault()
-    }  
+        return people
+    }
   }
 
-  sortName = () => {
-    let namePeople = this.state.defaultPeople.slice(0)
-    namePeople.sort((a,b) => {
+  sortName = (people) => {
+    return people.slice(0).sort((a,b) => {
       if(a.name < b.name){ return -1 }
       if(a.name > b.name){ return 1 }
       return 0;
     })
-    this.setState({
-      renderedPeople: namePeople
-    })
   }
 
-  sortPriority = () => {
-    let priorityPeople = this.state.defaultPeople.slice(0)
-    priorityPeople.sort((a,b) => {
+  sortPriority = (people) => {
+    return people.slice(0).sort((a,b) => {
       return a.priority - b.priority
     })
-    this.setState({
-      renderedPeople: priorityPeople
-    })
   }
 
-  sortDefault = () => {
-    const defaultPeople = this.state.defaultPeople.slice(0)
-    this.setState({
-      renderedPeople: defaultPeople
-    })
+  filterPeople = (people) => {
+    if(this.state.selectedCategory === 'default'){
+      return people
+    }
+
+    return people.filter((person) => person.category === this.state.selectedCategory)
   }
 
   render() {
-    const renderedPeople = this.state.renderedPeople.map((person, index) => <Person person={person} key={index} />)
+    const filteredPeople = this.filterPeople(this.people)
+    const sortedPeople   = this.sortPeople(filteredPeople)
+    const renderedPeople = sortedPeople.map((person, index) => <Person person={person} key={index} />)
 
     return (
       <div id='people-container'>
-        <SortPeople handleSort={this.sort} />
-        <FilterPeople />
+        <SortPeople handleSort={this.updateSort} />
+        <FilterCategory categories={this.categories} handleFilter={this.updateCategory} />
 
         <div className='people-list-container'>
           {renderedPeople}

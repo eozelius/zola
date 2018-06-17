@@ -67,20 +67,20 @@
 
 
 /* Sort */
-.sort-container,
-.filter-container {
+.sort-people-container,
+.filter-people-container {
   width: 28%;
   height: 150px;
   border: 1px solid black;
   margin: 0 4% 3%;
 }
 
-.sort-container {
+.sort-people-container {
   float: left;
   margin-left: 15%;
 }
 
-.filter-container {
+.filter-people-container {
   float: right;
   margin-right: 15%;
 }
@@ -96,20 +96,20 @@ select {
 
 /* Filter */
 
-.filter-container .input-control {
+.filter-people-container .input-control {
   width: 95%;
   display: block;
   text-align: left;
   margin: 1% 0 1% 4%;
 }
 
-.filter-container label {
+.filter-people-container label {
   margin: 0 0 0 5px;
   display: inline;
   position: relative;
 }
 
-.filter-container input[type="radio"] {
+.filter-people-container input[type="radio"] {
   display: inline;
   position: relative;
 }

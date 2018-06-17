@@ -2,9 +2,52 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-class Person extends Component {
-  
+class SortPeople extends Component {
+  render(){
+    return (
+      <div className='sort-people-container'>
+        <p>Sort By</p>
+        <select className='sort-people' onChange={this.props.handleSort()} name='sort-by' >
+          <option value='featured'>Featured</option>
+          <option value='name'>Name A-Z</option>
+          <option value='priority'>Priority</option>
+        </select>
+      </div>
+    )
+  }
+}
 
+class FilterPeople extends Component {
+  render(){
+    return (
+      <div className='filter-people-container'>
+        <p>Filter By Category</p>
+
+        <div className='input-control'>
+          <input type='radio' value='default' name='category' />
+          <label>All Categories</label>
+        </div>
+
+        <div className='input-control'>
+          <input type='radio' value='cat1' name='category' />
+          <label>Category 1</label>
+        </div>
+
+        <div className='input-control'>
+          <input type='radio' value='cat2' name='category'/>
+          <label>Category 2</label>
+        </div>
+
+        <div className='input-control'>
+          <input type='radio' value='cat3' name='category'/>
+          <label>Category 3</label>
+        </div>
+      </div>
+    )
+  }
+}
+
+class Person extends Component {
   bgColor(priority) {
     let bg = ''
     switch(priority) {
@@ -46,7 +89,6 @@ class PeopleList extends Component {
     this.state = {
       renderedPeople: [],
       defaultPeople: [],
-
     }
   }
 
@@ -113,7 +155,7 @@ class PeopleList extends Component {
         break
       default:
         this.sortDefault()
-    }    
+    }  
   }
 
   sortName = () => {
@@ -123,7 +165,6 @@ class PeopleList extends Component {
       if(a.name > b.name){ return 1 }
       return 0;
     })
-
     this.setState({
       renderedPeople: namePeople
     })
@@ -131,11 +172,9 @@ class PeopleList extends Component {
 
   sortPriority = () => {
     let priorityPeople = this.state.defaultPeople.slice(0)
-
     priorityPeople.sort((a,b) => {
       return a.priority - b.priority
     })
-
     this.setState({
       renderedPeople: priorityPeople
     })
@@ -143,7 +182,6 @@ class PeopleList extends Component {
 
   sortDefault = () => {
     const defaultPeople = this.state.defaultPeople.slice(0)
-
     this.setState({
       renderedPeople: defaultPeople
     })
@@ -153,42 +191,9 @@ class PeopleList extends Component {
     const renderedPeople = this.state.renderedPeople.map((person, index) => <Person person={person} key={index} />)
 
     return (
-      <div id='people-container'>        
-        <div className='sort-container'>
-          <p>Sort By</p>
-          <select className='sort-people' onChange={this.sort} name='sort-by' >
-            <option value='featured'>Featured</option>
-            <option value='name'>Name A-Z</option>
-            <option value='priority'>Priority</option>
-          </select>
-        </div>
-
-        <div className='filter-container'>
-          <p>Filter By Category</p>
-
-          <div className='input-control'>
-            <input type='radio' value='default' name='category' />
-            <label>All Categories</label>
-          </div>
-
-          <div className='input-control'>
-            <input type='radio' value='cat1' name='category' />
-            <label>Category 1</label>
-          </div>
-
-          <div className='input-control'>
-            <input type='radio' value='cat2' name='category'/>
-            <label>Category 2</label>
-          </div>
-
-          <div className='input-control'>
-            <input type='radio' value='cat3' name='category'/>
-            <label>Category 3</label>
-          </div>
-
-        </div>
-
-        <div className='clear-fix'></div>
+      <div id='people-container'>
+        <SortPeople handleSort={this.sort} />
+        <FilterPeople />
 
         <div className='people-list-container'>
           {renderedPeople}

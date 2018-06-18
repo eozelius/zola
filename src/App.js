@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import logo from './logo.svg'
+import { BrowserRouter, Route, NavLink, Switch } from 'react-router-dom'
 import './App.css'
 import PeopleList from './components/PeopleList'
-import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
+import Wedding from './components/Wedding'
 
 class App extends Component {
   render() {
@@ -10,22 +10,18 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
             <h1 className="App-title">Zola Technical Test!</h1>
-            
-            <Link to='/' className='link'>
+            <NavLink to='/' className='link'>
               <p>People Grid</p>
-            </Link>
-
-            <Link to='/wedding' className='link'>
+            </NavLink>
+            <NavLink to='/wedding' className='link'>
               <p>Wedding Site</p>
-            </Link>
-
+            </NavLink>
           </header>
 
           <Switch>
-            <Route exact path='/' component={PeopleList} />
-            <Route path='/wedding' component={PeopleList} />
+            <Route exact path='/'  component={PeopleList} />
+            <Route path='/wedding' component={Wedding} />
           </Switch>
         </div>
       </BrowserRouter>

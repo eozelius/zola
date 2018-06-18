@@ -1,0 +1,92 @@
+.article-container {
+  width: 100%;
+  background-color: #6CB35D;
+  padding: 5% 0 0 0;
+  color: white;
+}
+
+.article {
+  height: 450px;
+}
+
+.article-left {
+  width: 49%;
+  height: 300px;
+  margin: 0;
+  padding: 4% 0 0 0;
+  border-right: 1.75px solid #ddc;
+  float:left;
+  display: inline-block;
+}
+
+.article-left h2 {
+  font-family: 'Libre Baskerville';
+  font-size: 42px;
+  font-weight: 100;
+  font-variant: all-small-caps;
+  margin: 0 0 4% 0;
+  letter-spacing: 3px;
+}
+
+.article-left .date {
+  font-family: 'Libre Baskerville';
+}
+
+.article-right {
+  width: 50%;
+  margin: 0;
+  padding: 0;
+  float: right
+}
+
+.article-left img {
+  width: 25%;
+}
+
+.content {
+  width: 70%;
+  margin: 6% auto 0;
+  padding: 0;
+  line-height: 28px;
+  font-weight: 100;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 19px;
+  letter-spacing: 1;
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media screen and (max-width: 1100px) { 
+  .article {
+    height: 600px;
+  }
+
+  .article-left {
+    height: 450px;
+  }
+}
+
+@media screen and (max-width: 787px) {
+  .article {
+    height: auto;
+  }
+
+  .article-left,
+  .article-right {
+    width: 100%;
+    float: none;
+    display: block;
+  }
+
+  .article-left {
+    height: 100px;
+  }
+
+  .article-left img {
+    display: none;
+  }
+
+  .article-right .body {
+    padding-bottom: 5%;
+    border-bottom: 1px solid white;
+  }
+}

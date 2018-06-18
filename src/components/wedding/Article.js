@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import '../../styles/wedding/article.css'
 
 class Article extends Component {
   render() {
@@ -11,7 +12,7 @@ class Article extends Component {
         </section>
 
         <section className='article-right'>
-          <p className='body'>
+          <p className='content'>
             {this.props.article.body}
           </p>
         </section>

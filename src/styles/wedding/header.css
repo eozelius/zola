@@ -1,0 +1,54 @@
+.header-title h1 {
+  margin: 40px 0;
+  font-family: 'Libre Baskerville';
+  font-variant: all-small-caps;
+  font-weight: 100;
+  font-size: 42pt;
+  line-height: 30px;
+  letter-spacing: .1em;
+}
+
+.header-items {
+  display: block;
+  width: auto;
+  height: 30px;
+}
+
+.header-item {
+  width: 150px;
+  height: 20px;
+  display: inline-block;
+  margin: 0;
+  padding: 1% 0 0 0;
+  float: left;
+  line-height: 20px;
+  text-align: left;
+  font-size: 12pt;
+  font-family: 'Josefin Sans', sans-serif;
+  font-variant: all-small-caps;
+}
+
+.header-item:first-child {
+  padding-left: 3%;
+}
+
+.header-item:last-child {
+  padding-right: 3%;
+}
+
+.header-item.right {
+  float: right;
+  text-align: right;
+}
+
+@media screen and (max-width: 787px) {
+  .header-title h1 {
+    font-size: 2.5em;
+    text-align: left;
+    padding-left: 5%;
+  }
+
+  .header-items {
+    display: none;
+  }
+}

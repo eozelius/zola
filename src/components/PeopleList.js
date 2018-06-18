@@ -113,6 +113,8 @@ class PeopleList extends Component {
 
     return (
       <div id='people-container'>
+        <h2 className='title'>People Grid</h2>
+
         <SortPeople handleSort={this.updateSort} />
         <FilterCategory categories={this.categories} handleFilter={this.updateCategory} selectedCategory={this.state.selectedCategory} />
 

@@ -15,7 +15,7 @@ body {
 
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: 170px;
   padding: 20px;
   color: white;
 }
@@ -39,6 +39,23 @@ body {
 }
 
 /* Zola */
+
+/* <App /> */
+a.link {
+  width: auto;
+  display: inline-block;
+  margin: -1% 6%;
+  color: #DDD;
+  text-decoration: none;
+  font-size: 1.1em;
+}
+
+.title {
+  color: #444;
+  margin:0 0 4%;
+}
+
+
 /* <People /> */
 #people-container {
   width: 85%;

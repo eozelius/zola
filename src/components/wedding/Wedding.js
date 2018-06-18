@@ -3,7 +3,7 @@ import Header from './Header'
 import ArticleList from './ArticleList'
 import Splash from './Splash'
 import branch from '../../images/Palmier1-White.png'
-import splashImage from '../../images/ethan.jpg'
+import splashImage from '../../images/splash.jpg'
 import '../../styles/wedding/wedding.css'
 
 class Wedding extends Component {

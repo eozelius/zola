@@ -1,0 +1,17 @@
+.filter-people-container .input-control {
+  width: 95%;
+  display: block;
+  text-align: left;
+  margin: 1% 0 1% 4%;
+}
+
+.filter-people-container label {
+  margin: 0 0 0 5px;
+  display: inline;
+  position: relative;
+}
+
+.filter-people-container input[type="radio"] {
+  display: inline;
+  position: relative;
+}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../../styles/people/sort.css'
 
 class SortPeople extends Component {
   render(){

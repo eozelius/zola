@@ -1,0 +1,27 @@
+.sort-people-container,
+.filter-people-container {
+  width: 28%;
+  height: 150px;
+  border: 1px solid black;
+  margin: 0 4% 3%;
+}
+
+.sort-people-container {
+  float: left;
+  margin-left: 15%;
+}
+
+.filter-people-container {
+  float: right;
+  margin-right: 15%;
+}
+
+select {
+  width: 200px;
+  height: 33px;
+  margin: 0 auto 4%;
+  font-size: 14px;
+  line-height: 14px;
+  overflow: hidden;
+}
+

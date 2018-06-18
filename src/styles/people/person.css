@@ -1,0 +1,27 @@
+#people-container {
+  width: 85%;
+  display: block;
+  margin: 5% auto;
+}
+
+.person {
+  width: 29%;
+  height: 400px;
+  display: inline-block;
+  border: 2px solid #000;
+  margin: 1% ;
+}
+
+.person .name {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.person .category {
+  font-size: 12px;
+}
+
+.person .age {
+  font-style: italic;
+  font-size: 12px;
+}

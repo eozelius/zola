@@ -7,20 +7,20 @@ class Header extends Component {
       <div className='header'>
         <div className='header-items'>
           <div className='header-item date'>
-            <span>March 10th, 2018</span>
+            <span>{this.props.data.date}</span>
           </div>
 
           <div className='header-item location'>
-            <span>Memphis</span> 
+            <span>{this.props.data.location}</span> 
           </div>
 
           <div className='header-item right hashtag'>
-            <span>#cynthiaandwilliam</span>
+            <span>{this.props.data.hashtag}</span>
           </div>
         </div>
 
         <div className='header-title'>
-          <h1>Cynthia & William</h1>
+          <h1>{this.props.data.title}</h1>
         </div>
       </div>
     )

@@ -1,7 +1,7 @@
 .splash-container {
   width: 100%;
   height: 700px;
-  background: url('../../images/ethan.jpg') no-repeat center center;
+  background:  no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -12,11 +12,12 @@
   font-family: 'Libre Baskerville';
   font-weight: normal;
   font-size: 6.15em;
-  margin: 20px 0;
   font-variant: all-small-caps;
   color: #fff;
   line-height: 1em;
   padding-top: 20%;
+  width: 67%;
+  margin: 0 auto;
 }
 
 @media screen and (max-width: 787px) {
@@ -27,5 +28,6 @@
   .splash-title {
     font-size: 3em;
     line-height: 1em;
+    width: 60%;
   }
 }

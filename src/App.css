@@ -121,12 +121,4 @@ select {
   position: relative;
 }
 
-/* <Wedding /> */
-#wedding-container {
-  width: 100%;
-  height: 666px;
-  display: block;
-  margin: 1% auto;
-}
-
 /* end Zola */

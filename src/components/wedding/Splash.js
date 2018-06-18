@@ -1,11 +1,18 @@
 import React, { Component } from 'react'
 import '../../styles/wedding/splash.css'
 
+// Proabably smart to set up a default background image
+
 class Splash extends Component {
   render () {
+  	const backgroundImage = this.props.data.image
+  	const splashStyle = {
+  		backgroundImage: `url(${backgroundImage})`
+  	}
+
     return (
-      <div className='splash-container'>
-        <h1 className='splash-title'>we're getting<br/> married</h1>
+      <div className='splash-container' style={splashStyle}>
+        <h1 className='splash-title'>{this.props.data.title}</h1>
       </div>
     )
   }

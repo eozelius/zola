@@ -11,7 +11,7 @@ To get started copy or clone directory, and run `$ yarn start` or `$ npm start`.
   - yarn 1.3.2
 
 ### People Grid
-Renders a list of people from a hard-coded set of people.  Each person has 'name', 'age', 'priority' and 'category'.  Background color is determined by 'priority.'  Results can be sorted by 'Featured (default)', 'Name (a-z)', or 'Priority.'  Resulted can also be filtered by Category.  If Results are sorted and filtered at the same time, the list of people will first be filtered, then sorted.
+Renders a list of people from a hard-coded set of people.  Each person has 'name', 'age', 'priority' and 'category'.  Background color is determined by 'priority.'  Results can be sorted by 'Featured (default)', 'Name (a-z)', or 'Priority.'  Results can also be filtered by Category.  If Results are sorted and filtered at the same time, the list of people will first be filtered, then sorted.
 
 Components can be found in src/components/people/.  Specific style sheets can be found for each component in src/styles/people/
   #### Components

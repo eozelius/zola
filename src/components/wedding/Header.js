@@ -3,24 +3,26 @@ import '../../styles/wedding/header.css'
 
 class Header extends Component {
   render() {
+    const {data} = this.props
+
     return (
       <div className='header'>
         <div className='header-items'>
           <div className='header-item date'>
-            <span>{this.props.data.date}</span>
+            <span>{data.date}</span>
           </div>
 
           <div className='header-item location'>
-            <span>{this.props.data.location}</span> 
+            <span>{data.location}</span> 
           </div>
 
           <div className='header-item right hashtag'>
-            <span>{this.props.data.hashtag}</span>
+            <span>{data.hashtag}</span>
           </div>
         </div>
 
         <div className='header-title'>
-          <h1>{this.props.data.title}</h1>
+          <h1>{data.title}</h1>
         </div>
       </div>
     )

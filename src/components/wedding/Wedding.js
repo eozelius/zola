@@ -7,9 +7,7 @@ import splashImage from '../../images/splash.jpg'
 import '../../styles/wedding/wedding.css'
 
 class Wedding extends Component {
-	constructor(){
-    super()
-
+  render(){
     const data = {
       header: {
         date: 'March 10th, 2018',
@@ -38,15 +36,11 @@ class Wedding extends Component {
       ]
     }
 
-    this.data = data
-  }
-
-  render(){
     return (
       <div id='wedding-container'>
-        <Header data={this.data.header} />
-        <Splash data={this.data.splash}/>
-        <ArticleList articles={this.data.articles} />
+        <Header data={data.header} />
+        <Splash data={data.splash}/>
+        <ArticleList articles={data.articles} />
       </div>
     )
   }
